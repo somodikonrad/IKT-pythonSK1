@@ -9,7 +9,9 @@ def szamitas():
     r = int(sugarb.get())
     m = int(magasg.get())
     terfogat = math.pi * r * r * m
-    
+    terfb.delete(0, END)
+    terfb.insert(0, str(terfogat)+ 'cm³')
+
 foablak = Tk()
 
 
@@ -23,7 +25,7 @@ magassag.grid(column = 1, row = 2)
 magasg = Entry(foablak)
 magasg.grid(column = 2, row = 2, columnspan = 2)
 
-gomb1 = Button(foablak, text = 'kiszámítás')
+gomb1 = Button(foablak, text = 'kiszámítás', command = szamitas)
 gomb1.grid(column = 3, row = 3)
 
 terfogat = Label(foablak, text= 'Térfogat(cm³):')
