@@ -1,7 +1,7 @@
 from tkinter import*
 import math
 
-gyoker = 'D:\\IKT Konrád\\IKT-pythonSK\\'
+gyoker = 'C:\\Users\\somag\\OneDrive\\Asztali gép\\IKT Python\\IKT-pythonSK1\\'
 
 
 
@@ -11,6 +11,15 @@ def szamitas():
     terfogat = math.pi * r * r * m
     terfb.delete(0, END)
     terfb.insert(0, str(terfogat)+ 'cm³')
+
+    vassuruseg = round (7.874 * terfogat, 2)
+    vashengb.delete (0, END)
+    vashengb.insert (0, str(vassuruseg))
+
+    fasuruseg = round (0.65 * terfogat, 2)
+    fahengb.delete (0, END)
+    fahengb.insert (0, str(fasuruseg))
+    
 
 foablak = Tk()
 
