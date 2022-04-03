@@ -1,7 +1,51 @@
 from tkinter import*
-foablak = Tk()
+import math
 
-gyoker = 'D:\\IKT Konrád\\IKT-pythonSK\\'
+
+def szamitas ():
+    if len(sugarg.get()) == 0 or len(magasg.get()) == 0 or len(mennyib.get()) == 0 or type(sugarg.get()) != int or type(magasg()) != int or type(mennyib.get()) != int:
+        beleg.delete (0, END)
+        beleg.insert (0, 'Nem fér bele a bor' )
+        telitettg.delete (0,END)
+        telitettg.insert (0, 'Nem fér bele a bor' )
+        terfogatb.delete (0,END)
+        terfogatb.insert (0, 'Nem fér bele a bor' )
+
+    r = int(sugarg.get())
+    m = int(magasg.get())
+    borl = int(mennyib.get())
+    meg = 0
+    telitet = 0
+
+    if borl <= 0 or r <= 0 or m <= 0:
+        beleg.delete (0, END)
+        beleg.insert (0, 'Nem szükséges kiszámítani' )
+        telitettg.delete (0,END)
+        telitettg.insert (0, 'Nem szükséges kiszámítani' )
+        terfogatb.delete (0,END)
+        terfogatb.insert (0, 'Nem szükséges kiszámítani' )
+    else:
+
+        terfogat = round (math.pi * r * r * m * 0.001)
+        terfogatb.delete (0, END)
+        terfogatb.insert (0, str(terfogat)+' l' )
+
+        meg = terfogat - borl
+        telitet = round (borl * (100 / terfogat))
+
+        if borl > terfogat:
+            beleg.delete (0, END)
+            beleg.insert (0, 'Túl kicsi a hordó.' )
+            telitettg.delete (0,END)
+            telitettg.insert (0, 'Túl kicsi a hordó.' )
+        else:
+            beleg.delete (0, END)
+            beleg.insert (0, str(meg)+' l')
+            telitettg.delete (0, END)
+            telitettg.insert (0, str(telitet)+' %')
+
+foablak = Tk()
+gyoker = 'C:\\Users\\somag\\OneDrive\\Asztali gép\\IKT Python\\IKT-pythonSK1\\'
 
 img = PhotoImage(file= gyoker + "hordo.gif")
 foablak.iconphoto(True, img)
@@ -21,24 +65,24 @@ magassag.grid(column = 1, row = 3)
 magasg = Entry(foablak)
 magasg.grid(column = 2, row = 3, columnspan = 2)
 
-gomb1 = Button(foablak, text = 'kiszámítás')
+
+terfogat = Label(foablak, text= 'Ennyi literes a hordó: ')
+terfogat.grid(column = 1, row = 5)
+terfogatb = Entry(foablak)
+terfogatb.grid(column = 2, row = 5, columnspan = 2)
+
+bele= Label(foablak, text= 'Ennyi liter fér még bele:')
+bele.grid(column = 1, row = 6)
+beleg = Entry(foablak)
+beleg.grid(column = 2, row = 6, columnspan = 2)
+
+telitett = Label(foablak, text= 'Ennyi százalékig van a hordó:')
+telitett.grid(column = 1, row = 7)
+telitettg = Entry(foablak)
+telitettg.grid(column = 2, row = 7, columnspan = 2)
+
+gomb1 = Button(foablak, text = 'kiszámítás', command = szamitas)
 gomb1.grid(column = 3, row = 4)
-
-
-mennyiseg = Label(foablak, text= 'Ennyi literes a hordó: ')
-mennyiseg.grid(column = 1, row = 5)
-mennyib = Entry(foablak)
-mennyib.grid(column = 2, row = 5, columnspan = 2)
-
-sugar= Label(foablak, text= 'Ennyi liter fér még bele:')
-sugar.grid(column = 1, row = 6)
-sugarg = Entry(foablak)
-sugarg.grid(column = 2, row = 6, columnspan = 2)
-
-magassag = Label(foablak, text= 'Ennyi százalékig van a hordó:')
-magassag.grid(column = 1, row = 7)
-magasg = Entry(foablak)
-magasg.grid(column = 2, row = 7, columnspan = 2)
 
 
 foablak.mainloop()
